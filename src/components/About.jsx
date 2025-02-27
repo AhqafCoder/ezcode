@@ -2,7 +2,7 @@ import React from "react";
 
 function About() {
     return (
-        <section id="about" className="py-16 bg-black text-white">
+        <section id="about" className="py-16  text-white">
             <div className="container mx-auto px-6 md:px-12">
                 <div className="flex flex-col md:flex-row items-center gap-8">
                     {/* Left Column: Image */}
