@@ -50,7 +50,7 @@ function Navbar() {
 
                 {/* Join Us Button */}
                 <div className="hidden md:block">
-                    <button className="bg-gradient-to-r from-purple-400 to-pink-500 font-semibold text-black-500  px-4 py-2 rounded-lg border-1 border-black transform transition-transform duration-300 hover:scale-105">
+                    <button className="bg-transparent border-2 border-pink-500 text-white px-6 py-2 rounded-lg font-semibold hover:bg-pink-500 hover:text-black hover:border-transparent  transition-all duration-300">
                         Join Us
                     </button>
                 </div>
