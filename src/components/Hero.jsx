@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import '../index.css';
 
 const Hero = () => {
@@ -19,9 +20,11 @@ const Hero = () => {
         {/* Buttons Container */}
         <div className="flex space-x-4 text-left md:pl-8">
           {/* Button 1 */}
+          < Link to="/login" >
           <button className="bg-pink-500 border-2 border-pink-500 text-black px-6 py-2 rounded-lg font-semibold hover:bg-black hover:text-white hover:border-pink-500  transition-all duration-300">
             Join Now
           </button>
+          </Link>
 
           {/* Button 2 */}
           <button className="bg-transparent border-2 border-pink-500 text-white px-6 py-2 rounded-lg font-semibold hover:bg-pink-500 hover:text-black hover:border-transparent  transition-all duration-300">
