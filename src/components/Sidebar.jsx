@@ -7,8 +7,8 @@ const Sidebar = ({ isOpen, onToggle }) => {
       {/* Sidebar (Fixed on the left with mt-15, with scrollable content, toggleable on small screens, static on large screens) */}
       <div
         className={`
-          fixed top-0 left-0 w-64 h-[calc(100vh-75px)] bg-black bg-opacity-50 p-4 z-40 overflow-y-auto transition-transform duration-300
-          md:fixed md:w-64 md:h-[calc(100vh-32px)] md:bg-black md:bg-opacity-50 md:p-4 md:flex md:flex-col md:ml-0 md:mt-22
+          fixed top-22 left-0 w-64 h-[calc(100vh-75px)] bg-black bg-opacity-50 p-4 z-40 overflow-y-auto transition-transform duration-300
+          md:fixed md:w-64 md:h-[calc(100vh-32px)] md:bg-black md:bg-opacity-50 md:p-4 md:flex md:flex-col md:ml-0 md:mt-0
           ${isOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}
         `}
       >
