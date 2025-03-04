@@ -8,7 +8,7 @@ function About() {
                     {/* Left Column: Image */}
                     <div className="w-full md:w-1/2 flex justify-center"> {/* Centered the image */}
                         <img
-                            src="../src/assets/about.png" // Replace with your image path
+                            src="/about.png" // Replace with your image path
                             alt="About EzCode Community"
                             className="rounded-full w-100 h-100 object-cover mx-auto shadow-lg" // Made image small and circular
                         />

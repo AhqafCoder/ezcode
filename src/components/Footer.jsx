@@ -82,8 +82,8 @@ const Footer = () => {
           <div className="flex-1">
             <h3 className="text-xl font-semibold text-pink-500 mb-4">Contact</h3>
             <div className="text-gray-300 space-y-2">
-              <p>📞 Location: Aeansol India-713305</p>
-              <p>📖 Email: ezcodecommunity@gmail.com</p>
+              <p>📞 Location: Invertis University-Bareilly-243001</p>
+              <p>📖 Email: ezcode0403@gmail.com</p>
             </div>
           </div>
         </div>
