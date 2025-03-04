@@ -10,6 +10,6 @@ export default defineConfig({
     host: "0.0.0.0",
     port: process.env.PORT || 10000,
     strictPort: true,
-    allowedHosts: [""] 
+    allowedHosts: ["ezcode-119ec.firebaseapp.com, ezcode-119ec.web.app,ezcode-xi.vercel.app"], 
   }
 })
