@@ -27,7 +27,7 @@ const Hero = () => {
           </Link> 
 
           {/* Button 2 */}
-          < Link to="/resources/master-html" >
+          < Link to="/resources" >
           <button className="bg-transparent border-2 border-pink-500 text-white px-6 py-2 rounded-lg font-semibold hover:bg-pink-500 hover:text-black hover:border-transparent  transition-all duration-300">
             Explore Resources
           </button>

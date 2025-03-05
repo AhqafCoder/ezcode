@@ -17,6 +17,8 @@ import Sidebar from './components/Sidebar';
 import Navbar2 from './components/Navbar2'; 
 import Navbar from './components/Navbar';
 import Dashboard from './Pages/Dashboard';
+import Resources from './Pages/Resources';
+import Frontathon from './Pages/Frontathon';
 
 
 
@@ -34,6 +36,8 @@ function App() {
             <Route path="/login" element={ <Layout> <Login /><Footer /> </Layout> } />
             <Route path="/dashboard" element={ <Layout>  <Dashboard/> </Layout> } />
             <Route path="/resources/master-html" element={ <Layout> <Navbar2/> </Layout> } />
+            <Route path="/resources" element={ <Layout> <Resources /> </Layout> } />
+            <Route path="/Frontathon" element={ <Layout> <Frontathon/> </Layout> } />
           </Routes>
       </Router>
 

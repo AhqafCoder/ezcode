@@ -71,10 +71,10 @@ function Navbar() {
             Events
           </Link>
           <Link
-            to="#blogs"
+            to="/resources"
             className="relative font-semibold transition duration-300 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-1 after:bg-pink-500 after:transition-all after:duration-300 hover:after:w-full"
           >
-            Blogs
+            Resources
           </Link>
           <Link
             to="#contact"
@@ -176,11 +176,11 @@ function Navbar() {
               Events
             </Link>
             <Link
-              to="#blogs"
+              to="/resources"
               className="text-white font-semibold hover:text-pink-500 transition-colors duration-300"
               onClick={toggleMobileMenu}
             >
-              Blogs
+              Resources
             </Link>
             <Link
               to="#contact"
@@ -194,7 +194,7 @@ function Navbar() {
                 <img
                   src={user.photoURL || 'https://via.placeholder.com/40'}
                   alt="User Avatar"
-                  className="w-10 h-10 rounded-full object-cover cursor-pointer"
+                  className="w-10 h-10 rounded-full  hover:scale-105 object-cover cursor-pointer"
                   onClick={toggleDropdown}
                 />
                 {isDropdownOpen && (
