@@ -15,7 +15,7 @@ import Footer from './components/Footer';
 
 
 import Navbar2 from './components/Navbar2'; 
-import Navbar from './components/Navbar';
+
 import Dashboard from './Pages/Dashboard';
 import Resources from './Pages/Resources';
 import Frontathon from './Pages/Frontathon';
