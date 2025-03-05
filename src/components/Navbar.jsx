@@ -1,11 +1,40 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+// src/components/Navbar.jsx
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { auth } from "../firebase";
+import { onAuthStateChanged, signOut } from "firebase/auth";
 
 function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [user, setUser] = useState(null); // Track authenticated user
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false); // Track dropdown state
+  const navigate = useNavigate();
+
+  // Listen for auth state changes
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+    });
+    return () => unsubscribe();
+  }, []);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
+
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      setUser(null);
+      setIsDropdownOpen(false);
+      navigate('/login'); // Redirect to login after logout
+    } catch (error) {
+      console.error("Logout failed:", error.message);
+    }
   };
 
   return (
@@ -55,11 +84,46 @@ function Navbar() {
           </Link>
         </div>
 
-        {/* Join Us Button (Desktop) */}
-        <div className="hidden md:block">
-          <button className="bg-transparent border-2 border-pink-500 text-white px-6 py-2 rounded-lg font-semibold hover:bg-pink-500 hover:text-black hover:border-transparent transition-all duration-300">
-            <Link to="/login">Join Us</Link>
-          </button>
+        {/* User Avatar or Join Us Button (Desktop) */}
+        <div className="hidden md:block relative">
+          {user ? (
+            <div className="relative">
+              <img
+                src={user.photoURL || 'https://via.placeholder.com/40'} // Increased size to 40x40 (2px more than 38x38)
+                alt="User Avatar"
+                className="w-10 h-10 rounded-full object-cover cursor-pointer"
+                onClick={toggleDropdown}
+              />
+              {isDropdownOpen && (
+                <div className="absolute right-0 mt-2 w-40 bg-white rounded-lg shadow-lg z-50">
+                  <Link
+                    to="/profile"
+                    className="block px-4 py-2 text-gray-800 hover:bg-pink-500 hover:text-white"
+                    onClick={() => setIsDropdownOpen(false)}
+                  >
+                    Profile
+                  </Link>
+                  <Link
+                    to="/settings"
+                    className="block px-4 py-2 text-gray-800 hover:bg-pink-500 hover:text-white"
+                    onClick={() => setIsDropdownOpen(false)}
+                  >
+                    Settings
+                  </Link>
+                  <button
+                    onClick={handleLogout}
+                    className="block w-full text-left px-4 py-2 text-gray-800 hover:bg-pink-500 hover:text-white"
+                  >
+                    Logout
+                  </button>
+                </div>
+              )}
+            </div>
+          ) : (
+            <button className="bg-transparent border-2 border-pink-500 text-white px-6 py-2 rounded-lg font-semibold hover:bg-pink-500 hover:text-black hover:border-transparent transition-all duration-300">
+              <Link to="/login">Join Us</Link>
+            </button>
+          )}
         </div>
 
         {/* Mobile Menu Button (Hidden on Desktop) */}
@@ -125,11 +189,52 @@ function Navbar() {
             >
               Contact
             </Link>
-            <button className="bg-transparent border-2 border-pink-500 text-white px-6 py-2 rounded-lg font-semibold hover:bg-pink-500 hover:text-black hover:border-transparent transition-all duration-300">
-              <Link to="/login" onClick={toggleMobileMenu}>
-                Join Us
-              </Link>
-            </button>
+            {user ? (
+              <div className="relative block hover:rounded-lg">
+                <img
+                  src={user.photoURL || 'https://via.placeholder.com/40'}
+                  alt="User Avatar"
+                  className="w-10 h-10 rounded-full object-cover cursor-pointer"
+                  onClick={toggleDropdown}
+                />
+                {isDropdownOpen && (
+                  <div className="absolute right-0 mt-2 w-40 bg-white hover:rounded-lg rounded-lg shadow-lg z-50">
+                    <Link
+                      to="/profile"
+                      className="block px-4 py-2 text-gray-800 hover:bg-pink-500 hover:text-white"
+                      onClick={() => {
+                        setIsDropdownOpen(false);
+                        toggleMobileMenu(); // Close mobile menu if open
+                      }}
+                    >
+                      Profile
+                    </Link>
+                    <Link
+                      to="/settings"
+                      className="block px-4 py-2 text-gray-800 hover:bg-pink-500 hover:text-white"
+                      onClick={() => {
+                        setIsDropdownOpen(false);
+                        toggleMobileMenu(); // Close mobile menu if open
+                      }}
+                    >
+                      Settings
+                    </Link>
+                    <button
+                      onClick={handleLogout}
+                      className="block w-full text-left px-4 py-2 text-gray-800 hover:bg-pink-500 hover:text-white"
+                    >
+                      Logout
+                    </button>
+                  </div>
+                )}
+              </div>
+            ) : (
+              <button className="bg-transparent border-2 border-pink-500 text-white px-6 py-2 rounded-lg font-semibold hover:bg-pink-500 hover:text-black hover:border-transparent transition-all duration-300">
+                <Link to="/login" onClick={toggleMobileMenu}>
+                  Join Us
+                </Link>
+              </button>
+            )}
           </div>
         </div>
       )}
