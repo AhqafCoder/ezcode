@@ -1,7 +1,7 @@
 // src/components/Frontathon.jsx
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { auth, db } from '../firebase'; // Assuming Firebase is set up
+import { auth, db } from './firebase'; // Assuming Firebase is set up
 import { onAuthStateChanged } from 'firebase/auth';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 

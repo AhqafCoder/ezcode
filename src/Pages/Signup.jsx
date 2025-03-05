@@ -1,7 +1,7 @@
 // src/pages/Signup.jsx
 import React, { useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../firebase"; // Correct path to firebase.js
+import { auth } from "./firebase"; // Correct path to firebase.js
 import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
