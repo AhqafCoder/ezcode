@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
-import { auth, googleProvider } from "../Firebase"; // Correct path to firebase.js
+import { auth, googleProvider } from "../firebase"; // Correct path to firebase.js
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
@@ -12,7 +12,7 @@ const Login = () => {
     e.preventDefault();
     try {
       await signInWithEmailAndPassword(auth, email, password); // Log in with email/password
-      navigate("/dashboard"); // Redirect to the dashboard
+      navigate("/"); // Redirect to the dashboard
     } catch (error) {
       console.error("Error logging in:", error.message);
     }
@@ -21,7 +21,7 @@ const Login = () => {
   const handleGoogleLogin = async () => {
     try {
       await signInWithPopup(auth, googleProvider); // Log in with Google
-      navigate("/dashboard"); // Redirect to the dashboard
+      navigate("/"); // Redirect to the dashboard
     } catch (error) {
       console.error("Error signing in with Google:", error.message);
     }
