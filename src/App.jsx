@@ -1,10 +1,10 @@
 import { useState } from 'react'
 import './App.css'
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import { db } from './firebase';
+
 
 import Layout from './Layout';
-import Layout2 from './Layout2';
+
 
 import Hero from './components/Hero'
 import About from './components/About'
@@ -13,7 +13,7 @@ import Login from './Pages/Login';
 import Signup from './Pages/Signup';
 import Footer from './components/Footer';
 
-import Sidebar from './components/Sidebar';
+
 import Navbar2 from './components/Navbar2'; 
 import Navbar from './components/Navbar';
 import Dashboard from './Pages/Dashboard';
